@@ -24,6 +24,9 @@ dev = [
     "mypy",
 ]
 
+[tool.setuptools.packages.find]
+include = ["sap*", "core*", "grove*", "sandbox*"]
+
 [tool.pytest.ini_options]
 markers = [
     "slow: marks tests as slow (enterprise-scale, deselect with -m 'not slow')",
