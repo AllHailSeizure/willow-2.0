@@ -1,0 +1,87 @@
+{
+  "name": "willow-claude",
+  "displayName": "Willow — Claude",
+  "description": "Claude-native chat panel for VS Code — replace GitHub Copilot with Claude",
+  "version": "0.1.0",
+  "publisher": "willow",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "AI",
+    "Chat",
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "willow-claude",
+          "title": "Willow — Claude",
+          "icon": "$(comment-discussion)"
+        }
+      ]
+    },
+    "views": {
+      "willow-claude": [
+        {
+          "type": "webview",
+          "id": "willow.chatView",
+          "name": "Chat",
+          "visibility": "visible"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "willow.openChat",
+        "title": "Willow: Open Chat Panel",
+        "category": "Willow"
+      }
+    ],
+    "configuration": {
+      "title": "Willow — Claude",
+      "properties": {
+        "willow.claudeApiKey": {
+          "type": "string",
+          "default": "",
+          "description": "Anthropic API key for Claude. Keep this secret.",
+          "markdownDescription": "Anthropic API key for Claude. You can get one at [console.anthropic.com](https://console.anthropic.com)."
+        },
+        "willow.model": {
+          "type": "string",
+          "default": "claude-sonnet-4-6",
+          "description": "Claude model to use for chat responses.",
+          "enum": [
+            "claude-sonnet-4-6",
+            "claude-opus-4-5",
+            "claude-haiku-4-5"
+          ],
+          "enumDescriptions": [
+            "Claude Sonnet 4.6 — balanced speed and intelligence (default)",
+            "Claude Opus 4.5 — most capable",
+            "Claude Haiku 4.5 — fastest and most economical"
+          ]
+        }
+      }
+    }
+  },
+  "scripts": {
+    "build": "node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "vscode:prepublish": "node esbuild.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.30.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "@types/vscode": "^1.85.0",
+    "esbuild": "^0.20.0",
+    "typescript": "^5.3.0"
+  }
+}
