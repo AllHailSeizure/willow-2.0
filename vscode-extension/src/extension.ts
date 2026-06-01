@@ -21,8 +21,8 @@ export function activate(context: vscode.ExtensionContext): void {
 
   // Command: focus/open the chat panel
   context.subscriptions.push(
-    vscode.commands.registerCommand('willow.openChat', () => {
-      vscode.commands.executeCommand('willow.chatView.focus');
+    vscode.commands.registerCommand('synapse.openChat', () => {
+      vscode.commands.executeCommand('synapse.chatView.focus');
     })
   );
 

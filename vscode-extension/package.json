@@ -1,9 +1,9 @@
 {
-  "name": "willow-claude",
-  "displayName": "Willow — Claude",
-  "description": "Claude-native chat panel for VS Code — replace GitHub Copilot with Claude",
+  "name": "synapse",
+  "displayName": "Synapse",
+  "description": "Enables the transmission — Claude natively in VS Code for maximum effectiveness",
   "version": "0.1.0",
-  "publisher": "willow",
+  "publisher": "synapse",
   "engines": {
     "vscode": "^1.85.0"
   },
@@ -20,17 +20,17 @@
     "viewsContainers": {
       "activitybar": [
         {
-          "id": "willow-claude",
-          "title": "Willow — Claude",
+          "id": "synapse",
+          "title": "Synapse",
           "icon": "$(comment-discussion)"
         }
       ]
     },
     "views": {
-      "willow-claude": [
+      "synapse": [
         {
           "type": "webview",
-          "id": "willow.chatView",
+          "id": "synapse.chatView",
           "name": "Chat",
           "visibility": "visible"
         }
@@ -38,21 +38,21 @@
     },
     "commands": [
       {
-        "command": "willow.openChat",
-        "title": "Willow: Open Chat Panel",
-        "category": "Willow"
+        "command": "synapse.openChat",
+        "title": "Synapse: Open Chat Panel",
+        "category": "Synapse"
       }
     ],
     "configuration": {
-      "title": "Willow — Claude",
+      "title": "Synapse",
       "properties": {
-        "willow.claudeApiKey": {
+        "synapse.claudeApiKey": {
           "type": "string",
           "default": "",
           "description": "Anthropic API key for Claude. Keep this secret.",
           "markdownDescription": "Anthropic API key for Claude. You can get one at [console.anthropic.com](https://console.anthropic.com)."
         },
-        "willow.model": {
+        "synapse.model": {
           "type": "string",
           "default": "claude-sonnet-4-6",
           "description": "Claude model to use for chat responses.",

@@ -3,7 +3,7 @@ import * as path from 'path';
 import { streamChat, ChatMessage } from './claudeClient';
 
 export class ChatViewProvider implements vscode.WebviewViewProvider {
-  public static readonly viewType = 'willow.chatView';
+  public static readonly viewType = 'synapse.chatView';
 
   private _view?: vscode.WebviewView;
   private _conversationHistory: ChatMessage[] = [];
@@ -57,7 +57,7 @@ export class ChatViewProvider implements vscode.WebviewViewProvider {
       return;
     }
 
-    const config = vscode.workspace.getConfiguration('willow');
+    const config = vscode.workspace.getConfiguration('synapse');
     const apiKey: string = config.get('claudeApiKey') || '';
     const model: string = config.get('model') || 'claude-sonnet-4-6';
 
@@ -65,7 +65,7 @@ export class ChatViewProvider implements vscode.WebviewViewProvider {
       this._view.webview.postMessage({
         type: 'error',
         text:
-          'No API key configured. Please set `willow.claudeApiKey` in VS Code Settings.',
+          'No API key configured. Please set `synapse.claudeApiKey` in VS Code Settings.',
       });
       return;
     }
@@ -170,7 +170,7 @@ export class ChatViewProvider implements vscode.WebviewViewProvider {
              style-src ${webview.cspSource} 'unsafe-inline';
              script-src 'nonce-${nonce}';" />
   <link rel="stylesheet" href="${cssUri}" />
-  <title>Willow — Claude</title>
+  <title>Synapse</title>
 </head>
 <body>
 <div id="app">
